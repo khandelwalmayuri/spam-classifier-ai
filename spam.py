@@ -40,13 +40,18 @@ accuracy=model.score(X_test, y_test)
 print("Accuracy:", accuracy)
 
 # Test custom message
-msg = ["Hi this is sherya"]#["Congratulations! You won a free prize"]
-msg_vector = vectorizer.transform(msg)
-#testing with a example message
-prediction = model.predict(msg_vector)
+# msg = ["Hi this is sherya"]#["Congratulations! You won a free prize"]
+# msg_vector = vectorizer.transform(msg)
+# #testing with a example message
+# prediction = model.predict(msg_vector)
 
-if prediction[0] == 1:
-    print("Spam Message 🚫")
-else:
-    print("Not Spam ✅")
+# if prediction[0] == 1:
+#     print("Spam Message 🚫")
+# else:
+#     print("Not Spam ✅")
+
+def predict_spam(message):
+    message_vector = vectorizer.transform([message])
+    prediction = model.predict(message_vector)
+    return "Spam 🚫" if prediction[0] == 1 else "Not Spam ✅"
     
